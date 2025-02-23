@@ -1,96 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TradingView Chart</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #14152f;
-    }
-    .tradingview-widget-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    #tradingview_0b60e {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingView Bro Lysis - Professional Trading Charts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #14152f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00c6fb, #005bea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+        }
+
+        .markets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .market-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .market-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .market-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .market-description {
+            color: #a0aec0;
+            font-size: 0.875rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 2rem;
+            color: #a0aec0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .markets {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="tradingview-widget-container">
-    <div id="tradingview_0b60e"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-      // Initialize TradingView widget (moved from script.js)
-      function initTradingViewWidget() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const market = urlParams.get('market') || 'BTCUSD'; // Default to BTCUSD
+    <div class="container">
+        <div class="hero">
+            <h1>TradingView Bro Lysis</h1>
+            <p class="subtitle">Professional-grade charts for serious traders</p>
+        </div>
 
-        const marketSymbols = {
-          'BTCUSD': 'COINBASE:BTCUSD',
-          'ETHUSD': 'COINBASE:ETHUSD',
-          'XRPUSD': 'COINBASE:XRPUSD',
-          'ADAUSD': 'COINBASE:ADAUSD',
-          'DJIA': 'FOREXCOM:DJI',
-          'Nasdaq': 'NASDAQ:NDX',
-          'SP500': 'FOREXCOM:SPX',
-          'EURUSD': 'FOREXCOM:EURUSD',
-          'GBPUSD': 'FOREXCOM:GBPUSD',
-          'USDJPY': 'FOREXCOM:USDJPY',
-          'AUDUSD': 'FOREXCOM:AUDUSD',
-          'USDCAD': 'FOREXCOM:USDCAD',
-          'XAUUSD': 'FOREXCOM:XAUUSD',
-          'WTI': 'TVC:USOIL',
-          'XAGUSD': 'FOREXCOM:XAGUSD'
-        };
+        <div class="markets">
+            <a href="chart.html?market=BTCUSD" class="market-card">
+                <div class="market-name">Crypto</div>
+                <div class="market-description">BTC, ETH, XRP, and more</div>
+            </a>
+            <a href="chart.html?market=EURUSD" class="market-card">
+                <div class="market-name">Forex</div>
+                <div class="market-description">Major currency pairs</div>
+            </a>
+            <a href="chart.html?market=WTI" class="market-card">
+                <div class="market-name">Commodities</div>
+                <div class="market-description">Oil, Gold, Silver</div>
+            </a>
+            <a href="chart.html?market=DJIA" class="market-card">
+                <div class="market-name">Indices</div>
+                <div class="market-description">Dow Jones, S&P 500, Nasdaq</div>
+            </a>
+        </div>
 
-        const widgetConfig = {
-          "width": "100%",
-          "height": "100%",
-          "symbol": marketSymbols[market] || "COINBASE:BTCUSD", // Use market from URL
-          "interval": "1",
-          "timezone": "Asia/Kuala_Lumpur",
-          "theme": "dark",
-          "style": "1",
-          "locale": "en",
-          "toolbar_bg": "#f1f3f6",
-          "enable_publishing": false,
-          "withdateranges": true,
-          "hide_side_toolbar": false,
-          "allow_symbol_change": true,
-          "details": true,
-          "hotlist": true,
-          "calendar": false,
-          "studies": [
-            "STD;Average%1Directional%1Index",
-            "STD;MACD"
-          ],
-          "container_id": "tradingview_0b60e",
-          "show_popup_button": true,
-          "popup_width": "1000",
-          "popup_height": "650"
-        };
-
-        new TradingView.widget(widgetConfig);
-      }
-
-      document.addEventListener('DOMContentLoaded', initTradingViewWidget);
-    </script>
-  </div>
+        <footer>
+            <p>&copy; 2024 TradingView Bro Lysis. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
