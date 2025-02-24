@@ -68,6 +68,7 @@ const marketSymbols = {
   'DJIA': 'FOREXCOM:DJI',
   'Nasdaq': 'NASDAQ:NDX',
   'SP500': 'FOREXCOM:SPX',
+  'VIX': 'TVC:VIX',
   
   // Forex
   'EURUSD': 'FOREXCOM:EURUSD',
